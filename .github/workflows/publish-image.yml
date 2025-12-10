@@ -2,8 +2,9 @@ name: Build and publish Docker image
 
 on:
     push:
-        branches: [main] # or your default branch
-    workflow_dispatch: # allow manual trigger
+        branches:
+            - feature/azure-blob
+    workflow_dispatch:
 
 jobs:
     build-and-push:

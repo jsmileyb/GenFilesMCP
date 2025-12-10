@@ -13,3 +13,6 @@ wheels/
 *.env
 # local folders
 /documentos_test/*
+
+# jsb Additions
+.dumper

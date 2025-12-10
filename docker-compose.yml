@@ -5,12 +5,17 @@ services:
       dockerfile: Dockerfile
     # if you don't need/want to build, comment out the 3 lines above and uncomment line below
     # currently you need to build for ARM
-#    image: ghcr.io/baronco/genfilesmcp:latest
+    #    image: ghcr.io/baronco/genfilesmcp:latest
     container_name: genfilesmcp
     environment:
-      - ENABLE_CREATE_KNOWLEDGE=false    # true/false
-      - OWUI_URL=http://open-webui:8080  # default name and port for OWUI with docker: http://open-webui:8080
       - PORT=8015
+      # Azure Blob Storage configuration (REQUIRED)
+      - AZURE_STORAGE_ENABLED=true # Must be true
+      - AZURE_USE_MANAGED_IDENTITY=false # Set to true for Azure managed identity auth
+      - AZURE_CONNECTION_STRING= # Required if not using managed identity
+      # - AZURE_ACCOUNT_NAME=              # Required for managed identity or SAS URLs
+      - AZURE_CONTAINER_NAME=genfilesmcp # Blob container name
+      - AZURE_SAS_EXPIRY_HOURS=24 # SAS URL expiry time in hours
 #    networks:                # open-webui and genfilesmcp must be on the same docker network, depending on your setup, default network is probably fine
 #      - ollama-tools
 
@@ -18,5 +23,4 @@ services:
 #  ollama-tools:
 #    external: false
 #    driver: bridge
-
 

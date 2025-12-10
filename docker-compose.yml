@@ -17,10 +17,4 @@ services:
       - AZURE_CONTAINER_NAME=genfilesmcp # Blob container name
       - AZURE_SAS_EXPIRY_HOURS=24 # SAS URL expiry time in hours
 #    networks:                # open-webui and genfilesmcp must be on the same docker network, depending on your setup, default network is probably fine
-#      - ollama-tools
-
-#networks:
-#  ollama-tools:
-#    external: false
-#    driver: bridge
 
